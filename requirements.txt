@@ -2,6 +2,6 @@ dash
 dash-bootstrap-components
 pandas
 plotly
-matplotli
+matplotlib
 nfl_data_py
 urllib
