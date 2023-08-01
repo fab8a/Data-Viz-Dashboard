@@ -13,9 +13,6 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
                 className="dropdown-container",
                 children=[season_dropdown.render(app, data)]
             ),
-            html.Div(
-                className="figure-one-container",
-                children=[epa_figure.render(app, data)]
-            ),
+            epa_figure.render(app, data)
         ]
     )
