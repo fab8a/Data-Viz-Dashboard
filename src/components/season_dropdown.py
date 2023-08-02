@@ -1,8 +1,7 @@
-import pandas as pd
 from dash import Dash, html, dcc
 from . import ids
 
-def render(app: Dash, data: pd.DataFrame) -> html.Div:
+def render(app: Dash) -> html.Div:
     seasons = range(2013, 2023)
     return html.Div(
         children=[

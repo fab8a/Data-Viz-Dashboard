@@ -58,9 +58,5 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
             yaxis_title="EPA/Rush"
         )
         
-        return html.Div(dcc.Graph(figure=fig), id=ids.EPA_CHART, style={
-            'display': 'flex',
-            'justifyContent': 'center',
-            'alignItems': 'center',
-        },)
+        return html.Div(dcc.Graph(figure=fig), id=ids.EPA_CHART)
     return html.Div(id=ids.EPA_CHART)

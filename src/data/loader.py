@@ -12,17 +12,14 @@ def load_logos() -> pd.DataFrame:
     # Loading in the team logos
     if not os.path.exists("logos"):
         os.makedirs("logos")
-    if len(os.listdir('logos/')) == 0:
-        logos = nfl.import_team_desc()[['team_abbr', 'team_logo_espn']]
-        logo_paths = []
-        team_abbr = []
+    logos = nfl.import_team_desc()[['team_abbr', 'team_logo_espn']]
+    logo_paths = []
+    team_abbr = []
 
-        for team in range(len(logos)):
-            urllib.request.urlretrieve(logos['team_logo_espn'][team], f"logos/{logos['team_abbr'][team]}.tif")
-            logo_paths.append(f"logos/{logos['team_abbr'][team]}.tif")
-            team_abbr.append(logos['team_abbr'][team])
+    for team in range(len(logos)):
+        urllib.request.urlretrieve(logos['team_logo_espn'][team], f"logos/{logos['team_abbr'][team]}.tif")
+        logo_paths.append(f"logos/{logos['team_abbr'][team]}.tif")
+        team_abbr.append(logos['team_abbr'][team])
 
-        data = {'team_abbr' : team_abbr, 'logo_path' : logo_paths}
-        return pd.DataFrame(data)
-    else:
-        return
+    data = {'team_abbr' : team_abbr, 'logo_path' : logo_paths}
+    return pd.DataFrame(data)

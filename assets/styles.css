@@ -1,6 +1,9 @@
-.epa-chart-container {
+.chart-container {
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
+.targets-slider-container {
+    width: 1000px;
+}
