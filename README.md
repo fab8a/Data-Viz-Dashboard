@@ -9,3 +9,7 @@ NFL players statistics dashboard for DevF's Data Visualization module
 ## Yards after the catch leaders per position
 - YAC per play acummuladed (sum) for the entire season
 - Position selector to identify specific position laders or batching two plus positions
+
+
+# Extras
+### [Data wrangling Colab](https://colab.research.google.com/drive/1Fi001xmwjThMcLuw4FgTefySJMSjFurU?usp=sharing)
