@@ -1,10 +1,10 @@
-import os, urllib, PIL
+import PIL
 import plotly.express as px
 import pandas as pd
 import nfl_data_py as nfl
 from dash import Dash, html, dcc, Input, Output
 from . import ids
-from ..data.loader import load_data
+from ..data.loader import load_data, load_logos
 
 def render(app: Dash, data: pd.DataFrame) -> html.Div:
     @app.callback(
@@ -22,20 +22,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
         rush_epa = data[(data['rush'] == 1)].groupby('posteam')['epa'].mean().reset_index().rename(columns = {'epa' : 'rush_epa'})
         epa = pd.merge(pass_epa, rush_epa, on = 'posteam')
 
-        # Loading in the team logos
-        logos = nfl.import_team_desc()[['team_abbr', 'team_logo_espn']]
-        logo_paths = []
-        team_abbr = []
-        if not os.path.exists("logos"):
-            os.makedirs("logos")
-
-        for team in range(len(logos)):
-            urllib.request.urlretrieve(logos['team_logo_espn'][team], f"logos/{logos['team_abbr'][team]}.tif")
-            logo_paths.append(f"logos/{logos['team_abbr'][team]}.tif")
-            team_abbr.append(logos['team_abbr'][team])
-
-        data = {'team_abbr' : team_abbr, 'logo_path' : logo_paths}
-        logo_data = pd.DataFrame(data)
+        logo_data = load_logos()
         epa_with_logos = pd.merge(epa, logo_data, left_on = 'posteam', right_on = 'team_abbr')
 
         x = epa_with_logos['pass_epa']

@@ -1,9 +1,9 @@
 import pandas as pd
-from dash import Dash, html, dcc, Input, Output
+from dash import Dash, html, dcc
 from . import ids
 
 def render(app: Dash, data: pd.DataFrame) -> html.Div:
-    seasons = range(2015, 2023)
+    seasons = range(2013, 2023)
     return html.Div(
         children=[
             html.H5("Temporada deseada"),
