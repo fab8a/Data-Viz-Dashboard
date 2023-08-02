@@ -2,8 +2,6 @@ import plotly.express as px
 import pandas as pd
 from dash import Dash, html, dcc, Input, Output
 from . import ids
-from ..data.loader import load_data, load_logos
-
 
 def render(app: Dash, data: pd.DataFrame) -> html.Div:
     @app.callback(
@@ -16,8 +14,6 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
         receiver_yac = receiver_yac[(receiver_yac['targets'] >= min_targets)]
 
         name = receiver_yac['receiver_player_name']
-        yac = receiver_yac['yac']
-        targets = receiver_yac['targets']
         team = receiver_yac['team']
 
         fig = px.scatter(receiver_yac, x='yac', y='targets', text=name, width=1200, height=650, color=team)

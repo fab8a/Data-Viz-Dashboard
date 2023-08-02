@@ -13,7 +13,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
     )
 
     def update_graph(year) -> html.Div:
-        data = load_data(year)
+        #data = load_data(year)
         # Filtering and getting usefull data
         # EPA = Expected Points Added == Puntos Esperados Anadidos -> Metrica de eexito que estima los puntos que un equipo deberia anotar conforme al contexto y/o situacion actual. 
         pass_epa = data[(data['pass'] == 1)].groupby('posteam')['epa'].mean().reset_index().rename(columns = {'epa' : 'pass_epa'})
