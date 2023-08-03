@@ -2,7 +2,7 @@
 v: 0
 micros:
   - name: DataViz
-    src: ./
+    src: .
     engine: python3.9
     primary: true
-   run: gunicorn main:app
+    run: gunicorn main:app
