@@ -11,7 +11,7 @@ def main() -> None:
     app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
     app.title = "NFL Stats Analyzer"
     app.layout = create_layout(app)#, data)
-    app.run(port=8051, debug=True)
+    app.run()
 
 if __name__ == '__main__':
     main()      
