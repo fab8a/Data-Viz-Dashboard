@@ -1,26 +1,26 @@
-import PIL
 import plotly.express as px
 import pandas as pd
 import nfl_data_py as nfl
+from PIL import Image
 from dash import Dash, html, dcc, Input, Output
 from . import ids
-from ..data.loader import load_data, load_logos
+from ..data.loader import load_logos
 
 def render(app: Dash, data: pd.DataFrame) -> html.Div:
     @app.callback(
         Output(ids.EPA_CHART, 'children'),
-        Input(ids.SEASON_DROPDOWN, 'value')
+        Input(ids.SEASON_DROPDOWN, 'value'),
     )
 
     def update_graph(year) -> html.Div:
-        #data = load_data(year)
         # Filtering and getting usefull data
         # EPA = Expected Points Added == Puntos Esperados Anadidos -> Metrica de eexito que estima los puntos que un equipo deberia anotar conforme al contexto y/o situacion actual. 
-        pass_epa = data[(data['pass'] == 1)].groupby('posteam')['epa'].mean().reset_index().rename(columns = {'epa' : 'pass_epa'})
+        pass_epa = data[(data['pass'] == 1) & (data['season'] == year)].groupby('posteam')['epa'].mean().reset_index().rename(columns = {'epa' : 'pass_epa'})
         pass_epa.sort_values('pass_epa', ascending = False)
         # Combining passing plays EEPA + rushing plays EPA / Obtenemos el EPA total combinando el EPA de jugadas de pase + el de jugadas de corrida
-        rush_epa = data[(data['rush'] == 1)].groupby('posteam')['epa'].mean().reset_index().rename(columns = {'epa' : 'rush_epa'})
+        rush_epa = data[(data['rush'] == 1) & (data['season'] == year)].groupby('posteam')['epa'].mean().reset_index().rename(columns = {'epa' : 'rush_epa'})
         epa = pd.merge(pass_epa, rush_epa, on = 'posteam')
+        #epa = epa[epa['season'] == year]
 
         logo_data = load_logos()
         epa_with_logos = pd.merge(epa, logo_data, left_on = 'posteam', right_on = 'team_abbr')
@@ -36,7 +36,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
             # https://plotly.com/python-api-reference/generated/plotly.graph_objects.Figure.html?highlight=add_layout_image#plotly.graph_objects.Figure.add_layout_image
             fig.add_layout_image( 
                 dict(
-                    source=PIL.Image.open(path),
+                    source=Image.open(path),
                     xref='x',
                     yref='y',
                     x=x0,
@@ -52,8 +52,6 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
         # Update the layout with axis limits, title, and axis labels
         fig.update_layout(
             title=f"Rush and Pass EPA, {year} season",
-            xaxis=dict(range=[-0.2, 0.3]),
-            yaxis=dict(range=[-0.25, 0.15]),
             xaxis_title="EPA/Pass",
             yaxis_title="EPA/Rush"
         )
