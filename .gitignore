@@ -3,3 +3,6 @@ viz/
 data/
 logos/
 .space
+*.pyc
+.DS_Store
+.env
