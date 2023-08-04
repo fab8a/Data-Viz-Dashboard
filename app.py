@@ -7,14 +7,13 @@ from src.components.layout import create_layout
 from src.data.loader import load_data
 from src.components import ids
 
-def main() -> None:
-    seasons = ids.SEASONS
-    data = load_data(seasons)
-    app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-    server = app.server
-    app.title = "NFL Stats Analyzer"
-    app.layout = create_layout(app, data)
-    app.run(port=8051)
+seasons = ids.SEASONS
+data = load_data(seasons)
+app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
+app.title = "NFL Stats Analyzer"
+app.layout = create_layout(app, data)
+
 
 if __name__ == '__main__':
-    main()      
+    app.run(debug=True)
