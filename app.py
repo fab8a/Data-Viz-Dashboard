@@ -4,16 +4,12 @@ from dash import Dash
 import nfl_data_py as nfl
 
 from src.components.layout import create_layout
-from src.data.loader import load_data
-from src.components import ids
 
-seasons = ids.SEASONS
-data = load_data(seasons)
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-server = app.server
-app.title = "NFL Stats Analyzer"
-app.layout = create_layout(app, data)
-
+def main() -> None:
+    app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+    app.title = "NFL Stats Analyzer"
+    app.layout = create_layout(app)#, data)
+    app.run(debug=True)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    main()
