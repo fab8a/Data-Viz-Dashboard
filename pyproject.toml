@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "data-viz-dashboard"
+version = "0.1.0"
+description = ""
+authors = ["Fabian <fabian.ochoa@protonmail.com>"]
+readme = "README.md"
+packages = [{include = "data_viz_dashboard"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.0.3"
+dash = "^2.11.1"
+dash-core-components = "^2.0.0"
+nfl-data-py = "^0.3.0"
+plotly = "^5.16.0"
+python-snappy = "^0.6.0"
+pillow-pil = "^0.1.dev0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
