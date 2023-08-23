@@ -24,15 +24,15 @@ def create_layout(app: Dash) -> html.Div:
                     className="chart-container",
                     children=[epa_chart.render(app, data, year)]
                 ),
-                html.Hr(),
-                html.Div(
-                    className="targets-slider-container",
-                    children=[targets_slider.render(app)]
-                ),
-                html.Div(
-                    className="chart-container",
-                    children=[yac_chart.render(app, data, year)]
-                )
+                 html.Hr(),
+                 html.Div(
+                     className="targets-slider-container",
+                     children=[targets_slider.render(app)]
+                 ),
+                 html.Div(
+                     className="chart-container",
+                     children=[yac_chart.render(app, data, year)]
+                 )
             ]
         )
     data = load_data()
