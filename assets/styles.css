@@ -5,6 +5,24 @@
   }
   
 .targets-slider-container {
-    width: 1000px;
-    align-content: center;
+  width: 850px;
+  align-content: center;
+}
+
+.body-div {
+  padding: 15px;
+}
+
+.title-div {
+  position: relative;
+  text-align: center;
+}
+
+.banner-text {
+  font-size: 55px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
 }

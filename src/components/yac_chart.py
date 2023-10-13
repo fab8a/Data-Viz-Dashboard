@@ -14,15 +14,15 @@ def render(app: Dash, data: pd.DataFrame, year=2022) -> html.Div:
         receiver_yac = receiver_yac[(receiver_yac['targets'] >= min_targets)]
 
         name = receiver_yac['receiver_player_name']
-        team = receiver_yac['team']
 
-        fig = px.scatter(receiver_yac, x='yac', y='targets', text=name, width=1200, height=650, color=team)
+        fig = px.scatter(receiver_yac, x='yac', y='targets', text=name, width=900, height=500, color='team')
         fig.update_traces(textposition='top center')
 
         fig.update_layout(
             title=f"YAC vs Targets per receiver, {year} season",
             xaxis_title="Total yards after the catch",
-            yaxis_title="Targets"
+            yaxis_title="Targets",
+            showlegend=False   
         )
 
         return html.Div(dcc.Graph(figure=fig), id=ids.YAC_CHART)

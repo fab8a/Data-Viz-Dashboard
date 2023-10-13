@@ -5,4 +5,6 @@ micros:
     src: .
     engine: python3.9
     primary: true
-    run: gunicorn main:app
+    run: gunicorn app:app
+    dev: python3 app.py
+

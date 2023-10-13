@@ -41,7 +41,6 @@ def render(app: Dash, data: pd.DataFrame, year=2022) -> html.Div:
                 layer='above'
             )
         )
-    # Update the layout with axis limits, title, and axis labels
     fig.update_layout(
         title=f"Rush and Pass EPA, {year} season",
         xaxis_title="EPA/Pass",
