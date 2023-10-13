@@ -50,7 +50,7 @@ def render(app: Dash, data: pd.DataFrame, year=2022) -> html.Div:
 
     sacks = sacks_preds['sack']
     
-    fig = px.scatter(sacks_preds, y=sacks, x='sack_pred', text='name', width=900, height=550, color='name', title=f'Actual vs. Predicted Sacks per QB, {year} season')
+    fig = px.scatter(sacks_preds, y=sacks, x='sack_pred', text='name', width=1100, height=650, color='name', title=f'Actual vs. Predicted Sacks per QB, {year} season')
     fig.add_shape(type='line', x0=sacks.min(), y0=sacks.min(),
                 x1=sacks.max(), y1=sacks.max(),
                 line=dict(color='red', width=2, dash='dash'))

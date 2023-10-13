@@ -15,7 +15,7 @@ def render(app: Dash, data: pd.DataFrame, year=2022) -> html.Div:
 
         name = receiver_yac['receiver_player_name']
 
-        fig = px.scatter(receiver_yac, x='yac', y='targets', text=name, width=900, height=500, color='team')
+        fig = px.scatter(receiver_yac, x='yac', y='targets', text=name, width=1100, height=600, color='team')
         fig.update_traces(textposition='top center')
 
         fig.update_layout(

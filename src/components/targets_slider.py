@@ -5,10 +5,11 @@ from . import ids
 def render(app: Dash) -> html.Div:
     return html.Div(
         children=[
-            html.H6("Minimum amount of targets"),
+            html.H6("Minimum amount of \ntargets"),
             dcc.Slider(0, 180, 20,
                         value=100,
-                        id='targets_slider'
+                        id='targets_slider',
+                        vertical=True
                 ),
         ]
     )

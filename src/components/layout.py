@@ -32,13 +32,18 @@ def create_layout(app: Dash) -> html.Div:
                         ),
                         html.Hr(),
                         html.Div(
-                            className="targets-slider-container",
-                            children=[targets_slider.render(app)]
-                        ),
+                            children=[
+                                html.Div(
+                                    children=[targets_slider.render(app)],
+                                    className="target-slider"),
+                                html.Div(
+                                    children=[yac_chart.render(app, data, year)],
+                                    className="chart-container")],
+                            className="yac-section"),
+                        html.Hr(),
                         html.Div(
                             className="chart-container",
-                            children=[yac_chart.render(app, data, year),
-                                      sacks_chart.render(app, data, year)]
+                            children=[sacks_chart.render(app, data, year)]
                     )],
                     className="body-div"
                 )

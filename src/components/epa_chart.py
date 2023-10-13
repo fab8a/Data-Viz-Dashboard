@@ -21,7 +21,7 @@ def render(app: Dash, data: pd.DataFrame, year=2022) -> html.Div:
     y = epa_with_logos['rush_epa']
     paths = epa_with_logos['logo_path']
 
-    fig = px.scatter(x=x, y=y, width=1200, height=650)
+    fig = px.scatter(x=x, y=y, width=1100, height=600)
 
     # Add the logos as annotations
     for x0, y0, path in zip(x, y, paths):
@@ -46,5 +46,7 @@ def render(app: Dash, data: pd.DataFrame, year=2022) -> html.Div:
         xaxis_title="EPA/Pass",
         yaxis_title="EPA/Rush"
     )
-    
+    fig.update_xaxes(showgrid=False)
+    fig.update_yaxes(showgrid=False)
+
     return html.Div(dcc.Graph(figure=fig), id=ids.EPA_CHART)
