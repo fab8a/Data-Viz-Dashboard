@@ -19,6 +19,8 @@ NFL players statistics dashboard for DevF's Data Visualization module
 - Did EDA to both determine the relevancy of the 'features' as well as to choose the ML algorithm.
 - Made predictions that based on the league's average sack, how many of such situations each QB faced during the entire season
 
+
+![](assets/sample.gif)
 ---
 
 # Extras
