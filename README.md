@@ -21,6 +21,7 @@ NFL players statistics dashboard for DevF's Data Visualization module
 
 
 ![App sample GIF](https://github.com/fab8a/Data-Viz-Dashboard/blob/main/assets/sample.gif)
+
 ---
 
 # Extras
