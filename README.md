@@ -20,7 +20,7 @@ NFL players statistics dashboard for DevF's Data Visualization module
 - Made predictions that based on the league's average sack, how many of such situations each QB faced during the entire season
 
 
-![](https://github.com/fab8a/Data-Viz-Dashboard/blob/main/assets/sample.gif)
+![App sample GIF](https://github.com/fab8a/Data-Viz-Dashboard/blob/main/assets/sample.gif)
 ---
 
 # Extras
